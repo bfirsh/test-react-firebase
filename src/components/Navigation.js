@@ -1,47 +1,51 @@
 import React from "react";
 import { connect } from "react-redux";
+import { isLoaded, isEmpty } from "react-redux-firebase";
 import { Link } from "react-router-dom";
-import AuthUserContext from "./AuthUserContext";
 import SignOutButton from "./SignOutButton";
 
-const NavigationAuthed = () => (
-  <ul>
-    <li>
-      <Link to="/">Home</Link>
-    </li>
-    <li>
-      <Link to="/account">Account</Link>
-    </li>
-    <li>
-      <SignOutButton />
-    </li>
-  </ul>
-);
+class Navigation extends React.Component {
+  render() {
+    const { profile, auth } = this.props;
+    const dataLoaded = isLoaded(auth, profile);
+    const authExists = isLoaded(auth) && !isEmpty(auth);
 
-const NavigationNotAuthed = () => (
-  <ul>
-    <li>
-      <Link to="/">Home</Link>
-    </li>
-    <li>
-      <Link to="/signup">Sign Up</Link>
-    </li>
-    <li>
-      <Link to="/signin">Sign In</Link>
-    </li>
-  </ul>
-);
+    if (!dataLoaded) {
+      return <div>Loading...</div>;
+    }
 
-const Navigation = ({ authUser }) => {
-  if (authUser) {
-    return <NavigationAuthed />;
-  } else {
-    return <NavigationNotAuthed />;
+    if (authExists) {
+      return (
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <SignOutButton />
+          </li>
+        </ul>
+      );
+    } else {
+      return (
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/signin">Sign In</Link>
+          </li>
+        </ul>
+      );
+    }
   }
-};
+}
 
 const mapStateToProps = state => ({
-  authUser: state.sessionState.authUser
+  auth: state.firebase.auth,
+  profile: state.firebase.profile
 });
 
 export default connect(mapStateToProps)(Navigation);

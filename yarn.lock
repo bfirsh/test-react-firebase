@@ -5811,6 +5811,14 @@ react-lifecycles-compat@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.2.tgz#7279047275bd727a912e25f734c0559527e84eff"
 
+react-redux-firebase@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-redux-firebase/-/react-redux-firebase-2.1.0.tgz#ec7da1fc1a56a13a1db77fdaf1471bf74c4ef02a"
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
+    lodash "^4.17.4"
+    prop-types "^15.6.0"
+
 react-redux@^5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
@@ -5996,6 +6004,13 @@ reduce-function-call@^1.0.1:
   resolved "https://registry.yarnpkg.com/reduce-function-call/-/reduce-function-call-1.0.2.tgz#5a200bf92e0e37751752fe45b0ab330fd4b6be99"
   dependencies:
     balanced-match "^0.4.2"
+
+redux-firestore@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/redux-firestore/-/redux-firestore-0.4.3.tgz#b5340c2cce020967e03bc90ab9783c52ba3541cd"
+  dependencies:
+    lodash "^4.17.4"
+    prop-types "^15.6.0"
 
 redux@^4.0.0:
   version "4.0.0"

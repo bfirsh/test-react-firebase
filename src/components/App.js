@@ -4,7 +4,6 @@ import Navigation from "./Navigation";
 import HomePage from "./HomePage";
 import SignUpPage from "./SignUpPage";
 import SignInPage from "./SignInPage";
-import withAuthUser from "./withAuthUser";
 
 class App extends React.Component {
   render() {
@@ -24,11 +23,4 @@ class App extends React.Component {
   }
 }
 
-// <Route
-//   exact
-//   path="/account/forgotten-password"
-//   component={() => <PasswordForgetPage />}
-// />
-// <Route exact path="/home" component={() => <HomePage />} />
-// <Route exact path="/account" component={() => <AccountPage />} />
-export default withAuthUser(App);
+export default App;

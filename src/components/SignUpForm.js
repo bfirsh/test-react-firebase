@@ -1,5 +1,5 @@
 import React from "react";
-import { auth } from "../firebase";
+import { withFirebase } from "react-redux-firebase";
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class SignUpForm extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    auth
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+    this.props.firebase
+      .createUser({ email: this.state.email, password: this.state.password })
       .then(user => {
         this.props.onSuccess(user);
       })
@@ -51,4 +51,4 @@ class SignUpForm extends React.Component {
   }
 }
 
-export default SignUpForm;
+export default withFirebase(SignUpForm);
