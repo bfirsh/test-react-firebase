@@ -7,3 +7,4 @@ This is a test app to see how well React and Firebase work together. In particul
 - Whether local development environments work well
 - Whether data migrations are easy to write
 - Whether offline support works as expected
+- How well continuous integration with Firebase works
