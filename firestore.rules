@@ -3,5 +3,8 @@ service cloud.firestore {
     match /users/{userId} {
       allow read, create, update: if request.auth.uid == userId;
     }
+    match /products/{productId} {
+      allow read, create, update, delete: if true;
+    }
   }
 }

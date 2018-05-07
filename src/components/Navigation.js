@@ -21,6 +21,9 @@ class Navigation extends React.Component {
             <Link to="/">Home</Link>
           </li>
           <li>
+            <Link to="/products">Products</Link>
+          </li>
+          <li>
             <SignOutButton />
           </li>
         </ul>
