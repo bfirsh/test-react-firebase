@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import { Navbar, NavbarBrand } from "reactstrap";
+import { Link } from "react-router-dom";
+
 import Navigation from "./Navigation";
 import HomePage from "./HomePage";
 import ProductsPage from "./ProductsPage";
@@ -11,9 +14,10 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div>
-          <Navigation />
-
-          <hr />
+          <Navbar color="light" light expand="md" className="mb-5">
+            <NavbarBrand tag={Link} to="/">Test React + Firebase app</NavbarBrand>
+            <Navigation />
+          </Navbar>
 
           <Route exact path="/" component={() => <HomePage />} />
           <Route exact path="/products" component={() => <ProductsPage />} />

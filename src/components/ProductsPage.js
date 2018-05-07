@@ -7,6 +7,16 @@ import {
   isLoaded,
   isEmpty
 } from "react-redux-firebase";
+import {
+  Container,
+  Row,
+  Col,
+  ListGroup,
+  ListGroupItem,
+  ListGroupItemHeading,
+  Button
+} from "reactstrap";
+
 import AddProductForm from "./AddProductForm";
 
 class ProductListItem extends React.Component {
@@ -19,10 +29,12 @@ class ProductListItem extends React.Component {
 
   render() {
     return (
-      <li>
-        {this.props.product.name}
-        <button onClick={this.onDelete}>Delete</button>
-      </li>
+      <ListGroupItem>
+        <ListGroupItemHeading>{this.props.product.name}</ListGroupItemHeading>
+        <Button color="danger" onClick={this.onDelete}>
+          Delete
+        </Button>
+      </ListGroupItem>
     );
   }
 }
@@ -36,21 +48,33 @@ const ProductsList = ({ products }) => {
     return <div>No products</div>;
   }
   return (
-    <ul>
+    <ListGroup>
       {products.map(product => (
         <ProductListItem key={product.id} product={product} />
       ))}
-    </ul>
+    </ListGroup>
   );
 };
 
 const ProductsPage = ({ products, firestore }) => {
   return (
-    <div>
-      <h1>Products</h1>
-      <ProductsList products={products} />
-      <AddProductForm onSubmit={data => firestore.add("products", data)} />
-    </div>
+    <Container>
+      <Row className="mb-4">
+        <Col>
+          <h1>Products</h1>
+        </Col>
+      </Row>
+      <Row className="mb-4">
+        <Col>
+          <ProductsList products={products} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <AddProductForm onSubmit={data => firestore.add("products", data)} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

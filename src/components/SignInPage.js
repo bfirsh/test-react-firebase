@@ -1,12 +1,18 @@
 import React from "react";
-import SignInForm from "./SignInForm";
+import { Container, Row } from "reactstrap";
 import { withRouter } from "react-router-dom";
 
-const SignUpPage = ({ history }) => (
-  <div>
-    <h1>Sign In</h1>
-    <SignInForm onSuccess={user => history.push("/")} />
-  </div>
+import SignInForm from "./SignInForm";
+
+const SignInPage = ({ history }) => (
+  <Container>
+    <Row className="mb-4">
+      <h1>Sign In</h1>
+    </Row>
+    <Row>
+      <SignInForm onSuccess={user => history.push("/")} />
+    </Row>
+  </Container>
 );
 
-export default withRouter(SignUpPage);
+export default withRouter(SignInPage);

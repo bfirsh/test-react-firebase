@@ -1,5 +1,6 @@
 import React from "react";
 import { withFirebase } from "react-redux-firebase";
+import { Form, FormGroup, Alert, Label, Input, Button } from "reactstrap";
 
 class SignInForm extends React.Component {
   constructor(props) {
@@ -30,24 +31,30 @@ class SignInForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        {this.state.error && <p>{this.state.error.message}</p>}
-        <label>Email</label>
-        <input
-          name="email"
-          type="email"
-          value={this.state.email}
-          onChange={this.onInputChange}
-        />
-        <label>Password</label>
-        <input
-          name="password"
-          type="password"
-          value={this.state.password}
-          onChange={this.onInputChange}
-        />
-        <button type="submit">Sign In</button>
-      </form>
+      <Form onSubmit={this.onSubmit}>
+        {this.state.error && (
+          <Alert color="danger">{this.state.error.message}</Alert>
+        )}
+        <FormGroup>
+          <Label>Email</Label>
+          <Input
+            name="email"
+            type="email"
+            value={this.state.email}
+            onChange={this.onInputChange}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Password</Label>
+          <Input
+            name="password"
+            type="password"
+            value={this.state.password}
+            onChange={this.onInputChange}
+          />
+        </FormGroup>
+        <Button color="primary" type="submit">Sign In</Button>
+      </Form>
     );
   }
 }
